@@ -1,0 +1,36 @@
+# Environment variables
+.env
+
+# Google Cloud credentials
+credentials.json
+*.json
+
+# Virtual environment
+onlinecampus/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Database
+*.db
+sync_tracker.db
+
+# Generated Excel files
+*.xlsx
+newcomers*.xlsx
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
