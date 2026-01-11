@@ -1,4 +1,4 @@
-# 🌍 Online Campus Weekly Sync Automation
+# Online Campus Weekly Sync Automation
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,7 +6,7 @@
 
 > Automated data synchronization pipeline for TKT Online Campus member management, featuring intelligent data validation, AI-powered enrichment, and seamless Google Sheets integration.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -22,7 +22,7 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## 🎯 Overview
+## Overview
 
 The Online Campus Weekly Sync Automation is a production-ready Python application designed to streamline the process of synchronizing member data between Google Sheets. It automatically extracts new member registrations, validates and enriches the data using AI, and uploads the processed records to the main database.
 
@@ -36,30 +36,30 @@ The Online Campus Weekly Sync Automation is a production-ready Python applicatio
 - **Persistent State**: Tracks last processed record using SQLite
 - **Error Handling**: Robust error handling with detailed logging
 
-## ✨ Features
+## Features
 
-### 🔍 Data Validation
+### Data Validation
 - Email format validation with regex patterns
 - Automatic filtering of invalid entries
 - Whitespace trimming and normalization
 
-### 🤖 AI-Powered Enrichment
+### AI-Powered Enrichment
 - Geographic data enrichment (country and continent)
 - Phone number validation and country code correction
 - Intelligent data inference using OpenAI GPT-4o-mini
 
-### 📊 Data Processing
+### Data Processing
 - Name cleaning (removes Dr., Mr., Mrs., single-letter initials)
 - Phone number standardization (removes spaces, hyphens, plus signs)
 - Automatic appending of "TKT ONLINE CAMPUS" suffix to names
 
-### 🔄 Automation
+### Automation
 - One-command execution via shell script
 - Automatic virtual environment setup
 - Dependency management
 - State persistence for incremental syncs
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────┐
@@ -108,14 +108,14 @@ The Online Campus Weekly Sync Automation is a production-ready Python applicatio
     └──────────────┘
 ```
 
-## 📦 Prerequisites
+## Prerequisites
 
 - **Python**: 3.8 or higher
 - **Google Cloud Project**: With Sheets API and Drive API enabled
 - **OpenAI API Key**: For data enrichment
 - **Google Service Account**: With access to your Google Sheets
 
-## 🚀 Installation
+## Installation
 
 ### 1. Clone the Repository
 
@@ -164,7 +164,7 @@ This will:
 - Install all dependencies
 - Run the sync automation
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -181,7 +181,7 @@ SOURCE_SHEET = "TKT_EFAMILY _FORM"
 DEST_SHEET = "EFAMILY MAIN_20-10-25"
 ```
 
-## 💻 Usage
+## Usage
 
 ### Quick Start
 
@@ -214,7 +214,7 @@ On subsequent runs, the script will:
 2. Only process new records since the last sync
 3. Update the database with the new last email
 
-## 🔄 Workflow
+## Workflow
 
 ### Step-by-Step Process
 
@@ -254,7 +254,7 @@ On subsequent runs, the script will:
    - Displays processing statistics
    - Shows token usage and estimated cost
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 online-campus-sync/
@@ -269,7 +269,7 @@ online-campus-sync/
 └── onlinecampus/          # Virtual environment (auto-generated)
 ```
 
-## 💰 API Usage & Costs
+## API Usage & Costs
 
 ### OpenAI API (GPT-4o-mini)
 
@@ -290,7 +290,7 @@ online-campus-sync/
 - **Free tier**: 60 requests per minute per user
 - **Cost**: Free for typical usage
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -337,7 +337,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -354,17 +354,17 @@ Contributions are welcome! Please follow these steps:
 - Include error handling
 - Update README for new features
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [gspread](https://github.com/burnash/gspread) - Google Sheets Python API
 - [OpenAI](https://openai.com) - AI-powered data enrichment
 - [openpyxl](https://openpyxl.readthedocs.io) - Excel file handling
 
-## 📞 Support
+## Support
 
 For issues, questions, or contributions, please:
 - Open an issue on GitHub
@@ -373,6 +373,6 @@ For issues, questions, or contributions, please:
 
 ---
 
-**Made with ❤️ for TKT Online Campus**
+**Made with love for TKT Online Campus**
 
 *Last updated: January 2026*
