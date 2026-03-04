@@ -4,7 +4,7 @@ import pandas as pd
 from PIL import Image
 
 # --- Config ---
-EXCEL_PATH  = "/home/user/Documents/test.xlsx"
+EXCEL_PATH  = "/home/user/Downloads/TKT_AFRICA.xlsx"
 IMAGE_PATH  = "/home/user/Downloads/tktfamily.jpeg"
 SENDER     = "efamcare@gmail.com"
 PASSWORD   = "evkzzjrlkbepxqsm"
@@ -49,7 +49,7 @@ yag = yagmail.SMTP(user=SENDER, password=PASSWORD)
 
 for _, row in df.iterrows():
     email = str(row["Email"]).strip()
-    if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+    if not re.fullmatch(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}", email):
         print(f"Skipped invalid email: '{email}'")
         continue
     first_name = str(row["Name"]).strip().split()[0].capitalize()

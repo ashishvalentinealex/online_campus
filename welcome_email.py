@@ -24,7 +24,7 @@ All meetings are held on <strong>Zoom</strong> and are completely <strong>free</
 It will include a link to join our community group — please do join it! We share daily encouragement, fellowship meeting links, and much more to keep you inspired in your walk with God.<br><br>
 To know more about us, visit our YouTube channel:<br>
 <a href="https://www.youtube.com/@tktchurchofficial">https://www.youtube.com/@tktchurchofficial</a><br><br>
-For any questions, feel free to reach out to our Campus Caretaker, Bro. Ashish, on WhatsApp: <a href="https://wa.link/4suhtc">Chat on WhatsApp</a><br><br>
+For any questions, feel free to reach out to our Campus Caretaker, Bro. Ashish, on WhatsApp: <a href="https://wa.link/32bp71">Chat on WhatsApp</a><br><br>
 Once again, welcome. We are glad God brought you to us.<br><br>
 With love and blessings,<br>
 TKT Online Campus<br>

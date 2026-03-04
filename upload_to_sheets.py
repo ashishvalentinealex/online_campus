@@ -1,4 +1,5 @@
 from welcome_email import send_welcome_emails
+from send_allocation_email import send_allocation_emails
 from vcard_converter import create_phone_xlsx_and_vcf
 import yagmail
 import gspread
@@ -108,6 +109,11 @@ def upload_to_sheets():
     print("\n📨 Sending welcome emails...")
     send_welcome_emails(INPUT_FILE)
     print("✅ Welcome emails sent!")
+
+    # Send allocation emails to coordinators
+    print("\n📨 Sending allocation emails to coordinators...")
+    send_allocation_emails(INPUT_FILE)
+    print("✅ Allocation emails sent!")
 
 if __name__ == "__main__":
     try:
