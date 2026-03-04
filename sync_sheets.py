@@ -36,6 +36,7 @@ def get_last_email(conn):
 
 def save_last_email(conn, email):
     cursor = conn.cursor()
+    cursor.execute('DELETE FROM last_sync')
     cursor.execute('INSERT INTO last_sync (last_email) VALUES (?)', (email,))
     conn.commit()
 

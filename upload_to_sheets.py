@@ -1,3 +1,6 @@
+from welcome_email import send_welcome_emails
+from vcard_converter import create_phone_xlsx_and_vcf
+import yagmail
 import gspread
 from google.oauth2.service_account import Credentials
 from openpyxl import load_workbook
@@ -28,8 +31,8 @@ def init_db():
     return conn
 
 def save_last_email(conn, email):
-    """Save the last processed email to database"""
     cursor = conn.cursor()
+    cursor.execute('DELETE FROM last_sync')
     cursor.execute('INSERT INTO last_sync (last_email) VALUES (?)', (email,))
     conn.commit()
 
@@ -77,6 +80,34 @@ def upload_to_sheets():
     print(f"📧 Last email stored: {last_email}")
     
     conn.close()
+
+    # Generate phone list and VCF
+    print("\n📇 Generating VCF contact file...")
+    create_phone_xlsx_and_vcf()
+
+    # Send VCF to efamcare
+    print("\n📨 Sending VCF to efamcare@gmail.com...")
+    yag = yagmail.SMTP(user="efamcare@gmail.com", password="evkzzjrlkbepxqsm")
+    yag.send(
+        to="efamcare@gmail.com",
+        subject="New Newcomers Contact List",
+        contents=["Please find the new newcomers VCF attached.", "newcomers.vcf"]
+    )
+    print("✅ VCF sent!")
+
+    # Send newcomers_final.xlsx to avation2k14@gmail.com
+    print("\n📨 Sending newcomers list to avation2k14@gmail.com...")
+    yag.send(
+        to="avation2k14@gmail.com",
+        subject="New Newcomers List",
+        contents=["Please find the new newcomers list attached.", INPUT_FILE]
+    )
+    print("✅ Newcomers list sent!")
+
+    # Send welcome emails to all newly synced members
+    print("\n📨 Sending welcome emails...")
+    send_welcome_emails(INPUT_FILE)
+    print("✅ Welcome emails sent!")
 
 if __name__ == "__main__":
     try:

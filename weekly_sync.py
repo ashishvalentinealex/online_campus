@@ -51,8 +51,15 @@ def init_db():
     conn.commit()
     return conn
 
+def get_last_email(conn):
+    cursor = conn.cursor()
+    cursor.execute('SELECT last_email FROM last_sync ORDER BY id DESC LIMIT 1')
+    result = cursor.fetchone()
+    return result[0] if result else None
+
 def save_last_email(conn, email):
     cursor = conn.cursor()
+    cursor.execute('DELETE FROM last_sync')
     cursor.execute('INSERT INTO last_sync (last_email) VALUES (?)', (email,))
     conn.commit()
 
@@ -143,25 +150,22 @@ def sync_weekly():
     credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     gc = gspread.authorize(credentials)
     
-    # Step 1: Get last email from destination
-    print("[2/7] Getting last email from EFAMILY MAIN Sheet2...")
-    dest_workbook = gc.open(DEST_SHEET)
-    dest_sheet2 = dest_workbook.get_worksheet(1)
-    dest_data = dest_sheet2.get_all_values()
-    
-    if len(dest_data) == 0:
-        print("❌ Destination sheet is empty!")
+    # Step 1: Get last email from DB
+    print("[2/7] Getting last email from database...")
+    last_email = get_last_email(conn)
+    if not last_email:
+        print("❌ No last email found in database!")
         return
-    
-    last_email = dest_data[-1][0]
     print(f"      Last email: {last_email}")
-    
+
     # Step 2: Find email in source and get new records
     print("[3/7] Searching for new records in TKT_EFAMILY_FORM...")
+    dest_workbook = gc.open(DEST_SHEET)
+    dest_sheet2 = dest_workbook.get_worksheet(1)
     source_workbook = gc.open(SOURCE_SHEET)
     source_sheet = source_workbook.sheet1
     source_data = source_sheet.get_all_values()
-    
+
     start_row = None
     for i, row in enumerate(source_data):
         if len(row) > 0 and row[1] == last_email:
