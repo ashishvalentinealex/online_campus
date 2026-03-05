@@ -1,13 +1,17 @@
 import re
+import os
 import yagmail
 import pandas as pd
 from PIL import Image
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- Config ---
-EXCEL_PATH  = "/home/user/Downloads/TKT_AFRICA.xlsx"
-IMAGE_PATH  = "/home/user/Downloads/tktfamily.jpeg"
-SENDER     = "efamcare@gmail.com"
-PASSWORD   = "evkzzjrlkbepxqsm"
+EXCEL_PATH  = os.getenv("AFRICA_EXCEL_PATH")
+IMAGE_PATH  = os.getenv("IMAGE_PATH")
+SENDER     = os.getenv("SENDER_EMAIL")
+PASSWORD   = os.getenv("SENDER_PASSWORD")
 
 SUBJECT_TEMPLATE = "{first_name}, Africa Is Calling – Join Our Weekly Faith Fellowship"
 

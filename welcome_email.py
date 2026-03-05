@@ -1,12 +1,16 @@
 import re
+import os
 import yagmail
 import pandas as pd
 from PIL import Image
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- Config ---
-IMAGE_PATH   = "/home/user/Downloads/tktfamily.jpeg"
-SENDER       = "efamcare@gmail.com"
-PASSWORD     = "evkzzjrlkbepxqsm"
+IMAGE_PATH   = os.getenv("IMAGE_PATH")
+SENDER       = os.getenv("SENDER_EMAIL")
+PASSWORD     = os.getenv("SENDER_PASSWORD")
 RESIZED_PATH = "/tmp/TKT_CHURCH.jpeg"
 
 SUBJECT_TEMPLATE = "Welcome to TKT Online Campus, {first_name}! 🌍"

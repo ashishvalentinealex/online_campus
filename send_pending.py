@@ -5,9 +5,13 @@ Pulls new records directly from EFAMILY MAIN Sheet2 after the known last email.
 import gspread
 import pandas as pd
 import yagmail
+import os
+from dotenv import load_dotenv
 from google.oauth2.service_account import Credentials
 from vcard_converter import create_phone_xlsx_and_vcf
 from welcome_email import send_welcome_emails
+
+load_dotenv()
 
 SERVICE_ACCOUNT_FILE = 'credentials.json'
 SCOPES = [
@@ -49,7 +53,7 @@ print(f"✅ Saved {OUTPUT_FILE}")
 print("\n📇 Generating VCF...")
 create_phone_xlsx_and_vcf()
 
-yag = yagmail.SMTP(user="efamcare@gmail.com", password="evkzzjrlkbepxqsm")
+yag = yagmail.SMTP(user=os.getenv("SENDER_EMAIL"), password=os.getenv("SENDER_PASSWORD"))
 
 print("\n📨 Sending VCF to efamcare@gmail.com...")
 yag.send(

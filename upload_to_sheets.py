@@ -6,6 +6,10 @@ import gspread
 from google.oauth2.service_account import Credentials
 from openpyxl import load_workbook
 import sqlite3
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuration
 SERVICE_ACCOUNT_FILE = 'credentials.json'
@@ -88,7 +92,7 @@ def upload_to_sheets():
 
     # Send VCF to efamcare
     print("\n📨 Sending VCF to efamcare@gmail.com...")
-    yag = yagmail.SMTP(user="efamcare@gmail.com", password="evkzzjrlkbepxqsm")
+    yag = yagmail.SMTP(user=os.getenv("SENDER_EMAIL"), password=os.getenv("SENDER_PASSWORD"))
     yag.send(
         to="efamcare@gmail.com",
         subject="New Newcomers Contact List",

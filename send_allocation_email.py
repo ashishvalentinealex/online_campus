@@ -1,10 +1,14 @@
 import yagmail
 import pandas as pd
 import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 INPUT_FILE = "newcomers_final.xlsx"
-SENDER     = "efamcare@gmail.com"
-PASSWORD   = "evkzzjrlkbepxqsm"
+SENDER     = os.getenv("SENDER_EMAIL")
+PASSWORD   = os.getenv("SENDER_PASSWORD")
 DATE       = datetime.datetime.now().strftime("%d-%m-%Y")
 
 COORDINATORS = {
